@@ -54,7 +54,6 @@ public class Main {
     //METHODS---------------------------------------------------------------------------------
 
     public static void addDeposit(){
-        console.promptForString();
-
+        //console.promptForString();
     }
 }

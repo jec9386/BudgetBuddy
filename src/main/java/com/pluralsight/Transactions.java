@@ -1,20 +1,21 @@
-package com.pluralsight;
 
-    public class Transaction {
+    package com.pluralsight;
+
+    public class Transactions {
         private String date;
         private String time;
         private String description;
         private String vendor;
         private double amount;
 
-        public Transaction(String date, String time, String description, String vendor, double amount) {
+        public Transactions(String date, String time, String description, String vendor, double amount) {
             this.date = date;
             this.time = time;
             this.description = description;
             this.vendor = vendor;
             this.amount = amount;
         }
-//-------------------------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------------------
         //GETTER AND SETTER
         public String getDate() {
             return date;
@@ -55,10 +56,13 @@ package com.pluralsight;
         public void setAmount(double amount) {
             this.amount = amount;
         }
-//----------------------------------------------------------------------------------------------------------
-//Way I want my class to structure its instances using a method to return a string so I can put it into transactions.csv
+    //----------------------------------------------------------------------------------------------------------
 
+        //Way I want my class to structure its instances using a method to return a string so that I can put it into transactions.csv
         public String toCSV() {
             return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
         }
+
+
     }
+
