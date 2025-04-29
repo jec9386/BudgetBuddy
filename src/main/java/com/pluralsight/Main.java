@@ -2,6 +2,8 @@ package com.pluralsight;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 public class Main {
@@ -41,7 +43,7 @@ public class Main {
                     break;
                 //exit the application
                 case "X":
-
+                    //todo: finish ledger
                     break;
 
                 default:
@@ -57,25 +59,30 @@ public class Main {
 
     public static void addTransaction(String option){
         //prompts
-        String date = console.promptForString("Enter date (yyyy-MM-dd): ");
-        String time = console.promptForString("Enter time (24hrs(Military Time) (HH:mm): ");
+        LocalDate date = console.promptForDate("Enter date (yyyy-MM-dd): ");
+        LocalTime time = console.promptForTime("Enter time (24hrs(Military Time) (HH:mm): ");
         String description = console.promptForString("Enter description: ");
         String vendor = console.promptForString("Enter vendor: ");
         double amount = 0.00 ;
         if(option.equalsIgnoreCase("D")) {
-            amount =console.promptForDouble("Enter amount(00.00): ");}
+            amount =console.promptForDouble("Enter amount(00.00):$ ");}
         else if (option.equalsIgnoreCase("P")){
 
-            amount = console.promptForDouble("Enter amount(00.00): -");
+            amount = console.promptForDouble("Enter amount(00.00):$ -");
             amount = -Math.abs(amount);
         }
 
 
-        Transactions transaction = new Transactions(date, time, description, vendor, amount);
+        Transaction transaction = new Transaction(date, time, description, vendor, amount);
         //print out just to screen and to CSV file
         System.out.println("Transaction Details:");
-        System.out.println(transaction.toCSV());//TODO neatly formated transcation- ideal for user
-        writeTransactionToCSV(transaction);
+        System.out.println(String.format("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f",
+                transaction.getDate(),
+                transaction.getTime(),
+                transaction.getDescription(),
+                transaction.getVendor(),
+                transaction.getAmount()));//format nicely for the user to view
+        writeTransactionToCSV(transaction);//save the transaction in the csv file
     }
 
 
@@ -85,7 +92,7 @@ public class Main {
     }
 
     // Write the transaction to a CSV file
-    public static void writeTransactionToCSV(Transactions transaction) {
+    public static void writeTransactionToCSV(Transaction transaction) {
         try {
             //open file and add append data to it.
             FileWriter fileWriter = new FileWriter("transactions.csv", true);  // 'true' to append

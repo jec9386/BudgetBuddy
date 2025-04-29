@@ -59,24 +59,44 @@ public class Console {//interacting with console class
 
     }
 
-    //method for date input and to validate it
-    public boolean isValidDate(String input) {
-        try {
-            LocalDate.parse(input); // This expects yyyy-MM-dd format
-            return true;
-        } catch (DateTimeParseException e) {
-            return false;
+    //method for date prompt,validation, and conversion
+    public LocalDate promptForDate(String prompt) {
+        LocalDate date = null;
+        boolean valid = false;
+
+        while (!valid) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+
+            try {
+                date = LocalDate.parse(input);//convert String to date
+                valid = true; // If input is date, stop the loop
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please enter the date in yyyy-MM-dd format.");
+            }
         }
+
+        return date;
     }
 
-    //method for time input and to validate it
-    public boolean isValidTime(String input) {
-        try {
-            LocalTime.parse(input); // This expects HH:mm format
-            return true;
-        } catch (DateTimeParseException e) {
-            return false;
+    //method for time prompt, validation, and conversion
+    public LocalTime promptForTime(String prompt) {
+        LocalTime time = null;
+        boolean valid = false;
+
+        while (!valid) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+
+            try {
+                time = LocalTime.parse(input);
+                valid = true;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid time format. Please enter the time in HH:mm format (e.g., 14:30).");
+            }
         }
+
+        return time;
     }
 
 }
