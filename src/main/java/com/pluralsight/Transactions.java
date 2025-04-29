@@ -49,11 +49,11 @@
             this.vendor = vendor;
         }
 
-        public double getAmount() {
+        public Double getAmount() {
             return amount;
         }
 
-        public void setAmount(double amount) {
+        public void setAmount(Double amount) {
             this.amount = amount;
         }
     //----------------------------------------------------------------------------------------------------------
@@ -62,7 +62,5 @@
         public String toCSV() {
             return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
         }
-
-
     }
 
