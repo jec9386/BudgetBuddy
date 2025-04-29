@@ -49,4 +49,12 @@ public class Main {
 
         } while (!option.equals("X"));
     }
+
+
+    //METHODS---------------------------------------------------------------------------------
+
+    public static void addDeposit(){
+        console.promptForString();
+
+    }
 }
