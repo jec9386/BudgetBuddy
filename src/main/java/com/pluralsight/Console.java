@@ -75,8 +75,8 @@ public class Console {//interacting with console class
                 System.out.println("Invalid date format. Please enter the date in yyyy-MM-dd format.");
             }
         }
+            return date;
 
-        return date;
     }
 
     //method for time prompt, validation, and conversion

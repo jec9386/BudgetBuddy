@@ -4,11 +4,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import java.util.ArrayList;
 
 public class Main {
     private static Console console = new Console();
-
+    private static ArrayList<Transaction> transactions = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -30,11 +30,13 @@ public class Main {
             switch (option.toUpperCase()) {
                 // prompt user for the deposit information and save it to the csv file
                 case "D":
+                    System.out.println("Please fill in information below to ADD deposit.");
                     addTransaction(option);
                     break;
 
                 //prompt user for the debit information and save it to the csv file
                 case "P":
+                    System.out.println("Please fill in information below to Make a Payment(Debit).");
                     addTransaction(option);
                     break;
                 //display ledger screen
@@ -72,7 +74,7 @@ public class Main {
             amount = -Math.abs(amount);
         }
 
-
+        //create a transaction object to store and retrieve the values from user.
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
         //print out just to screen and to CSV file
         System.out.println("Transaction Details:");
@@ -82,6 +84,7 @@ public class Main {
                 transaction.getDescription(),
                 transaction.getVendor(),
                 transaction.getAmount()));//format nicely for the user to view
+        transactions.add(transaction);// append new object to array list
         writeTransactionToCSV(transaction);//save the transaction in the csv file
     }
 
