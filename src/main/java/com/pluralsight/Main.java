@@ -45,7 +45,7 @@ public class Main {
                     break;
                 //exit the application
                 case "X":
-                    //todo: finish ledger
+                    System.out.println("Thank you for using BudgetBuddy. See you next time!");
                     break;
 
                 default:
