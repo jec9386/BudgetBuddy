@@ -6,28 +6,29 @@ import java.util.Collections;
 
 public class Ledger {
     private static Console console = new Console();
-    public static void  displayLedger(ArrayList<Transaction> transactions){//get access to transactions by accepting an ArrayList of type Transaction objects
+
+    public static void displayLedger(ArrayList<Transaction> transactions) {//get access to transactions by accepting an ArrayList of type Transaction objects
 
         String choice;
 
         do {
             System.out.println(
                     "\nWelcome to Ledger Options\n" +
-                    "-------------------------\n" +
-                    "A) All - Display all entries\n" +
-                    "D) Deposits - Display only deposits\n" +
-                    "P) Payments - Display only payments\n" +
-                    "R) Reports\n" +
-                    "H) Home");
+                            "-------------------------\n" +
+                            "A) All - Display all entries\n" +
+                            "D) Deposits - Display only deposits\n" +
+                            "P) Payments - Display only payments\n" +
+                            "R) Reports\n" +
+                            "H) Home");
 
             choice = console.promptForString("Select an option (A/D/P/R/H): ");
 
             if (choice.equalsIgnoreCase("A")) {
-                showTransactions(transactions, "All");
+                showAll(transactions, "All");
             } else if (choice.equalsIgnoreCase("D")) {
-                showTransactions(transactions, "Deposit");
+                showDeposits(transactions, "Deposit");
             } else if (choice.equalsIgnoreCase("P")) {
-                showTransactions(transactions, "Payment");
+                showPayments(transactions, "Payment");
             } else if (choice.equalsIgnoreCase("R")) {
                 //TODO add report screen and prompt
             } else if (choice.equalsIgnoreCase("H")) {
@@ -39,18 +40,69 @@ public class Ledger {
         } while (!choice.equalsIgnoreCase("H"));
     }
 
-    public static void showAll(){
 
+    //--------METHOD SECTION----------------------------------------------------------------------------------------------------
+
+    //Display all transactions deposit and payment
+    public static void showAll(ArrayList<Transaction> transactions) {
+        // Sort newest to oldest
+        sortTransactions(transactions);
+
+        System.out.println(Transaction.getPrettyHeader("All"));
+
+        for (Transaction t : transactions) {
+            System.out.println(t.toPretty());
+        }
     }
 
-    public static void showDeposits(){
+    //Display all deposits only
+    public static void showDeposits(ArrayList<Transaction> transactions) {
 
+        sortTransactions(transactions);
+
+        System.out.println(Transaction.getPrettyHeader("Deposits"));
+
+        for (Transaction t : transactions) {
+            if (t.getAmount() > 0) {
+                System.out.println(t.toPretty());
+            }
+        }
     }
 
-    public static void showPayments(){
+    //Display all payments only
+    public static void showPayments(ArrayList<Transaction> transactions) {
 
+        sortTransactions(transactions);
+
+        System.out.println(Transaction.getPrettyHeader("Payments"));
+
+        for (Transaction t : transactions) {
+            if (t.getAmount() < 0) {
+                System.out.println(t.toPretty());
+            }
+        }
     }
-/**   NOTE!! Original code to show all transaction +(deposit and payments)- professor said its better to simplify code for readability. But keep here just to give you another way of writing this part of the code.
+
+
+    //sort from newest on top by date and time.
+    private static void sortTransactions(ArrayList<Transaction> transactions) {
+        Collections.sort(transactions, new Comparator<Transaction>() {
+            @Override
+            public int compare(Transaction first, Transaction second) {
+                // If both transactions happened on the same date
+                if (second.getDate().equals(first.getDate())) {
+                    // Compare by time, newer times come first
+                    return second.getTime().compareTo(first.getTime());
+                } else {
+                    // Compare by date, newer dates come first
+                    return second.getDate().compareTo(first.getDate());
+                }
+            }
+        });
+    }
+
+
+/*   NOTE!! Original code to show all transaction +(deposit and payments)- professor said its better to simplify code for readability. But keep here just to give you another way of writing this part of the code.
     //displayLedger() depending on user input All, deposit, payment
     public static void showTransactions(ArrayList<Transaction> transactions, String type) {
         // Sort newest to oldest
@@ -77,7 +129,7 @@ public class Ledger {
             }
         }
     }
-**/
+*/
+    }
+
 }
-
-
