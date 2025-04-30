@@ -93,11 +93,6 @@ public class Main {
     }
 
 
-    // Display the ledger (view transactions from CSV)
-    public static void displayLedger() {
-
-    }
-
     // Write the transaction to a CSV file
     public static void writeTransactionToCSV(Transaction transaction) {
         try {

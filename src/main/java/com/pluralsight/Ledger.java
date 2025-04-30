@@ -29,7 +29,7 @@ public class Ledger {
             } else if (choice.equalsIgnoreCase("P")) {
                 showTransactions(transactions, "Payment");
             } else if (choice.equalsIgnoreCase("R")) {
-                System.out.println("Reports coming soon!");
+                //TODO add report screen and prompt
             } else if (choice.equalsIgnoreCase("H")) {
                 return; // exits the loop and returns to main
             } else {
@@ -37,6 +37,18 @@ public class Ledger {
             }
 
         } while (!choice.equalsIgnoreCase("H"));
+    }
+
+    public static void showAll(){
+
+    }
+
+    public static void showDeposits(){
+
+    }
+
+    public static void showPayments(){
+
     }
 
     //displayLedger() depending on user input All, deposit, payment

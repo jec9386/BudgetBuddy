@@ -66,6 +66,16 @@
             return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
         }
 
+        public String toPretty(){
+           //TODO make meothod bring here
+           return null;
+        }
+
+        public static String getPrettyHeader(){
+            return null;
+            //TODO table heading goes here.
+        }
+
         //convert csv text back to a Transaction object so that it can be put into an Arraylist
         public static Transaction fromCSV(String csv) {
             String[] parts = csv.split("\\|");//split the String by pipe "|"
