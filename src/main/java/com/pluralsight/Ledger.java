@@ -50,7 +50,7 @@ public class Ledger {
     public static void showPayments(){
 
     }
-
+/**   NOTE!! Original code to show all transaction +(deposit and payments)- professor said its better to simplify code for readability. But keep here just to give you another way of writing this part of the code.
     //displayLedger() depending on user input All, deposit, payment
     public static void showTransactions(ArrayList<Transaction> transactions, String type) {
         // Sort newest to oldest
@@ -65,10 +65,7 @@ public class Ledger {
             }
         });
 
-        System.out.println("\n" + type + " Transactions");
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("Date        | Time     | Description       | Vendor           | Amount");
-        System.out.println("--------------------------------------------------------------------------");
+        System.out.println(Transaction.getPrettyHeader(type));
 
         for (Transaction t : transactions) {//t = transaction, loop through transactions array, and depending on which value user input it will select that.
             boolean matches = type.equals("All") ||
@@ -76,16 +73,11 @@ public class Ledger {
                     (type.equals("Payment") && t.getAmount() < 0);
 
             if (matches) {
-                System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n",
-                        t.getDate(),
-                        t.getTime(),
-                        t.getDescription(),
-                        t.getVendor(),
-                        t.getAmount());
+                System.out.println(t.toPretty());
             }
         }
     }
-
+**/
 }
 
 

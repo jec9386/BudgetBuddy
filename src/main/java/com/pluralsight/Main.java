@@ -80,14 +80,9 @@ public class Main {
 
         //create a transaction object to store and retrieve the values from user.
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
-        //print out just to screen and to CSV file
+        //print out inputs to screen and add to CSV file
         System.out.println("Transaction Details:");
-        System.out.println(String.format("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f",
-                transaction.getDate(),
-                transaction.getTime(),
-                transaction.getDescription(),
-                transaction.getVendor(),
-                transaction.getAmount()));//format nicely for the user to view
+        System.out.println(transaction.toPretty());//output nicely formated String for the user to review their input
         transactions.add(transaction);// append new object to array list
         writeTransactionToCSV(transaction);//save the transaction in the csv file
     }

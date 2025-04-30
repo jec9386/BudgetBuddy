@@ -66,21 +66,24 @@
             return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
         }
 
-        public String toPretty(){
-           //TODO make meothod bring here
-           return null;
+        public String toPretty(){//return a nicely formated String for the user to view
+            return String.format("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f",
+                    date, time, description, vendor, amount);
         }
 
-        public static String getPrettyHeader(){
-            return null;
-            //TODO table heading goes here.
-        }
+        public static String getPrettyHeader(String type) {
+            return "\n" + type + " Transactions\n" +
+                        "--------------------------------------------------------------\n" +
+                        "Date        | Time     | Description       | Vendor           | Amount\n" +
+                        "--------------------------------------------------------------------------";
+            }
+
 
         //convert csv text back to a Transaction object so that it can be put into an Arraylist
         public static Transaction fromCSV(String csv) {
             String[] parts = csv.split("\\|");//split the String by pipe "|"
             //Put value into its appropriate instance variable
-            LocalDate date = LocalDate.parse(parts[0]);
+            LocalDate date = LocalDate.parse(parts[0]);//.parse turns it into the Array type
             LocalTime time = LocalTime.parse(parts[1]);
             String description = parts[2];
             String vendor = parts[3];
