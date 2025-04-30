@@ -44,7 +44,7 @@ public class Main {
                 //display ledger screen
                 case "L":
 
-                    Ledger.displayLedger();
+                    Ledger.displayLedger(transactions);
 
                     break;
                 //exit the application
