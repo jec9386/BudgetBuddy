@@ -1,7 +1,5 @@
 package com.pluralsight;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -12,6 +10,10 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+        //First thing I want file to do is to load the String from transactions.csv file into the ArrayList.
+        loadTransactionsFromCSV();
+
         System.out.println("Welcome to BudgetBuddy!");
 
         String option;
@@ -41,7 +43,9 @@ public class Main {
                     break;
                 //display ledger screen
                 case "L":
-                    //todo: finish ledger
+
+                    Ledger.displayLedger();
+
                     break;
                 //exit the application
                 case "X":
@@ -111,6 +115,25 @@ public class Main {
             bufferedWriter.close();
         } catch (IOException e) {
             System.out.println("Error writing to file.");
+            e.printStackTrace();
+        }
+    }
+
+    //method to load CSV file into an ArrayList
+    public static void loadTransactionsFromCSV() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"));//grab/open file and Buffer makes reading faster
+            String line;
+
+            while ((line = reader.readLine()) != null) {//get entire line from file as string and save into line until no more strings
+                if(line.trim().isEmpty()){
+                    continue;//skip line if it's empty, dont try to convert it to an object.
+                }
+                transactions.add(Transaction.fromCSV(line)); // Use fromCSV method to convert CSV line into a Transaction object and add it to Array List
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Error reading from file.");
             e.printStackTrace();
         }
     }

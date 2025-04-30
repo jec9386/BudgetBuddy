@@ -65,5 +65,18 @@
         public String toCSV() {
             return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
         }
+
+        //convert csv text back to a Transaction object so that it can be put into an Arraylist
+        public static Transaction fromCSV(String csv) {
+            String[] parts = csv.split("\\|");//split the String by pipe "|"
+            //Put value into its appropriate instance variable
+            LocalDate date = LocalDate.parse(parts[0]);
+            LocalTime time = LocalTime.parse(parts[1]);
+            String description = parts[2];
+            String vendor = parts[3];
+            double amount = Double.parseDouble(parts[4]);
+
+            return new Transaction(date, time, description, vendor, amount);
+        }
     }
 
