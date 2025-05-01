@@ -1,7 +1,6 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.time.LocalDate;
 
 
@@ -51,12 +50,12 @@ public class Reports {
                 default:
                     System.out.println("Invalid option. Try again.");
             }
-        } while (choice != 0);
+        } while (true);
     }
     //--------------METHODS---------------------------------------------------------------------------------------------------
 
     //show all transactions for the current month to current date
-    //my logic why I did up to but not after is because - let's say someone has a reoccuring membership and they entered the date early to keep in transactions. But they are trying to see just how much they spent this month so they can know if they know if they can afford the membership. e.g. if they spent $200 of $250 and its only the 15th and the membership is 10 dollars then they can decide "hey I dont want to pay for the membership"
+    //my logic why I did up to but not after is because, factor in autopayment like for rent
     private static void showMonthToDate(ArrayList<Transaction> transactions) {
         Ledger.sortTransactions(transactions);
         LocalDate today = LocalDate.now();

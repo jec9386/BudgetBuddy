@@ -20,14 +20,14 @@ public class Main {
         //trap in loop to HomeScreen until user exits.
         do {
             String homeScreenPrompt =
-                "                 Home Screen                   \n" +
+                "\n                 Home Screen                   \n" +
                         "------------------------------------------------\n" +
                         "Please select an option from the following:\n" +
                         "    D - Add Deposit\n" +
                         "    P - Make Payment(Debit)\n" +
                         "    L - Ledger\n" +
                         "    X - Exit\n" +
-                        "(D,P,L,X): ";
+                        "Select an option (D,P,L,X): ";
             option = console.promptForString(homeScreenPrompt);
             switch (option.toUpperCase()) {
                 // prompt user for the deposit information and save it to the csv file
@@ -81,7 +81,7 @@ public class Main {
         //create a transaction object to store and retrieve the values from user.
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
         //print out inputs to screen and add to CSV file
-        System.out.println("Transaction Details:");
+        System.out.println("Transaction Details Documented:");
         System.out.println(transaction.toPretty());//output nicely formated String for the user to review their input
         transactions.add(transaction);// append new object to array list
         writeTransactionToCSV(transaction);//save the transaction in the csv file

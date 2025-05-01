@@ -12,16 +12,17 @@ public class Ledger {
         String choice;
 
         do {
-            System.out.println(
+            String ledgerScreenPrompt =
                     "\nWelcome to Ledger Options\n" +
                             "-------------------------\n" +
                             "A) All - Display all entries\n" +
                             "D) Deposits - Display only deposits\n" +
                             "P) Payments - Display only payments\n" +
                             "R) Reports\n" +
-                            "H) Home");
+                            "H) Home\n"+
+                            "Select an option (A/D/P/R/H): ";
 
-            choice = console.promptForString("Select an option (A/D/P/R/H): ");
+            choice = console.promptForString(ledgerScreenPrompt);
 
             if (choice.equalsIgnoreCase("A")) {
                 showAll(transactions, "All");
@@ -30,7 +31,7 @@ public class Ledger {
             } else if (choice.equalsIgnoreCase("P")) {
                 showPayments(transactions, "Payment");
             } else if (choice.equalsIgnoreCase("R")) {
-                //TODO add report screen and prompt
+                Reports.displayReports(transactions);
             } else if (choice.equalsIgnoreCase("H")) {
                 return; // exits the loop and returns to main
             } else {
@@ -85,7 +86,7 @@ public class Ledger {
 
 
     //sort from newest on top by date and time.
-    private static void sortTransactions(ArrayList<Transaction> transactions) {
+    public static void sortTransactions(ArrayList<Transaction> transactions) {
         Collections.sort(transactions, new Comparator<Transaction>() {
             @Override
             public int compare(Transaction first, Transaction second) {

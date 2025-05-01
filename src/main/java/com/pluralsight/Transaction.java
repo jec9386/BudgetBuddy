@@ -67,15 +67,14 @@
         }
 
         public String toPretty(){//return a nicely formated String for the user to view
-            return String.format("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f",
+            return String.format("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%,.2f",
                     date, time, description, vendor, amount);
         }
 
         public static String getPrettyHeader(String type) {
             return "\n" + type + " Transactions\n" +
-                        "--------------------------------------------------------------\n" +
-                        "Date        | Time     | Description       | Vendor           | Amount\n" +
-                        "--------------------------------------------------------------------------";
+                        "--------------------------------------------------------------\n"
+                        ;
             }
 
 
