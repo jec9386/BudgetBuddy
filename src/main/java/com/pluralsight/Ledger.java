@@ -44,7 +44,7 @@ public class Ledger {
     //--------METHOD SECTION----------------------------------------------------------------------------------------------------
 
     //Display all transactions deposit and payment
-    public static void showAll(ArrayList<Transaction> transactions) {
+    public static void showAll(ArrayList<Transaction> transactions,String type ) {
         // Sort newest to oldest
         sortTransactions(transactions);
 
@@ -56,7 +56,7 @@ public class Ledger {
     }
 
     //Display all deposits only
-    public static void showDeposits(ArrayList<Transaction> transactions) {
+    public static void showDeposits(ArrayList<Transaction> transactions,String type) {
 
         sortTransactions(transactions);
 
@@ -70,7 +70,7 @@ public class Ledger {
     }
 
     //Display all payments only
-    public static void showPayments(ArrayList<Transaction> transactions) {
+    public static void showPayments(ArrayList<Transaction> transactions,String type) {
 
         sortTransactions(transactions);
 
@@ -132,4 +132,4 @@ public class Ledger {
 */
     }
 
-}
+
