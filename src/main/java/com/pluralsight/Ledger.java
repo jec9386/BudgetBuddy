@@ -25,11 +25,11 @@ public class Ledger {
             choice = console.promptForString(ledgerScreenPrompt);
 
             if (choice.equalsIgnoreCase("A")) {
-                showAll(transactions, "All");
+                showAll(transactions);
             } else if (choice.equalsIgnoreCase("D")) {
-                showDeposits(transactions, "Deposit");
+                showDeposits(transactions);
             } else if (choice.equalsIgnoreCase("P")) {
-                showPayments(transactions, "Payment");
+                showPayments(transactions);
             } else if (choice.equalsIgnoreCase("R")) {
                 Reports.displayReports(transactions);
             } else if (choice.equalsIgnoreCase("H")) {
@@ -45,7 +45,7 @@ public class Ledger {
     //--------METHOD SECTION----------------------------------------------------------------------------------------------------
 
     //Display all transactions deposit and payment
-    public static void showAll(ArrayList<Transaction> transactions,String type ) {
+    public static void showAll(ArrayList<Transaction> transactions) {
         // Sort newest to oldest
         sortTransactions(transactions);
 
@@ -57,7 +57,7 @@ public class Ledger {
     }
 
     //Display all deposits only
-    public static void showDeposits(ArrayList<Transaction> transactions,String type) {
+    public static void showDeposits(ArrayList<Transaction> transactions) {
 
         sortTransactions(transactions);
 
@@ -71,7 +71,7 @@ public class Ledger {
     }
 
     //Display all payments only
-    public static void showPayments(ArrayList<Transaction> transactions,String type) {
+    public static void showPayments(ArrayList<Transaction> transactions) {
 
         sortTransactions(transactions);
 

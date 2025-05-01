@@ -71,8 +71,8 @@
                     date, time, description, vendor, amount);
         }
 
-        public static String getPrettyHeader(String type) {
-            return "\n" + type + " Transactions\n" +
+        public static String getPrettyHeader(String headerText) {
+            return "\n" + headerText + " Transactions\n" +
                         "--------------------------------------------------------------\n"
                         ;
             }
