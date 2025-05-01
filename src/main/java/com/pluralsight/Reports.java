@@ -12,7 +12,7 @@ public class Reports {
 
         do{
             String reportsScreenPrompt =
-                    "                 Reports Menu                  \n" +
+                    "                 Report Options                  \n" +
                             "------------------------------------------------\n" +
                             "Please select a report option:\n" +
                             "    1 - Month to Date\n" +
@@ -20,9 +20,9 @@ public class Reports {
                             "    3 - Previous Month\n" +
                             "    4 - Year to Date\n" +
                             "    5 - Previous Year\n" +
-                            "    6 - Search by Vendor\n" +
+                            "    6 - Custom Search\n" +
                             "    0 - Back\n" +
-                            "Select an option (1-6, or 0 to go back to ledger options): ";
+                            "Select an option (1-6, or 0 to go back to Ledger Options): ";
 
             choice = console.promptForInt(reportsScreenPrompt);
 
@@ -43,7 +43,7 @@ public class Reports {
                     showPreviousYear(transactions);
                     break;
                 case 6:
-                    searchByVendor(transactions);
+                    CustomSearch.displayCustomSearch(transactions);
                     break;
                 case 0:
                     return; // back to previous menu
@@ -118,16 +118,7 @@ public class Reports {
         }
     }
 
-    //custom transaction search by vendor
-    private static void searchByVendor(ArrayList<Transaction> transactions) {
-        Ledger.sortTransactions(transactions);
-        String vendor = console.promptForString("Enter vendor name: ");
-        for (Transaction t : transactions) {
-            if (t.getVendor().equalsIgnoreCase(vendor)) {
-                System.out.println(t.toPretty());
-            }
-        }
-    }
+
 
 }
 
