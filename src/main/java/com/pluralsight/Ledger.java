@@ -87,7 +87,8 @@ public class Ledger {
 
     //sort from newest on top by date and time.
     public static void sortTransactions(ArrayList<Transaction> transactions) {
-        Collections.sort(transactions, new Comparator<Transaction>() {
+        Collections.sort(transactions, new Comparator<Transaction>() {//collections sort list, and comparator defines
+            // rule sort by descending date and time
             @Override
             public int compare(Transaction first, Transaction second) {
                 // If both transactions happened on the same date
