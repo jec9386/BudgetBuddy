@@ -75,7 +75,7 @@ public class CustomSearch {
     //custom end date not just now
     private static void showAllTransactionsUpToEndDate(ArrayList<Transaction> transactions) {
         Ledger.sortTransactions(transactions);
-        LocalDate endDate = console.promptForDate("Enter the end date (yyyy-MM-dd) to get transactions up to that date: ");
+        LocalDate endDate = console.promptForDate("Enter the end date (YYYY-MM-DD) to get transactions up to that date: ");
         boolean found = false;
 
         for (Transaction t : transactions) {
@@ -84,10 +84,10 @@ public class CustomSearch {
                 System.out.println(t.toPretty());
                 found = true;
             }
-            if (!found) {
-                System.out.println("No transactions found up to the specified end date.");
-            }
+        }
 
+        if (!found) {
+            System.out.println("No transactions found up to the specified end date.");
         }
     }
 
